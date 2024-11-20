@@ -1,0 +1,117 @@
+/* src/App.css */
+
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.about {
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #495057;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Movie Section Styles */
+.movies-section {
+  margin-bottom: 40px;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap; /* Ensures items wrap to the next row */
+  gap: 20px; /* Creates uniform gaps between items */
+  justify-content: space-evenly; /* Distributes space between items */
+  padding: 0 20px;
+  width: 100%;
+  
+}
+
+.movie-row {
+  display: flex; /* Ensures the row layout is flex-based */
+  flex-wrap: wrap; /*Allows wrapping to the next row if needed */
+  gap: 20px; /* Uniform spacing between items */
+  justify-content: space-evenly; /*Aligns items to the start by default */
+  margin-top: 20px; /* Adds space above the row */
+  width: 100%;
+}
+
+.movie-item {
+  width: 200px; /* Fixed width */
+  height: 300px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+}
+
+.movie-item:hover {
+  transform: translateY(-10px);
+}
+
+.movie-item img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.movie-item h3 {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.movie-item p {
+  font-size: 1rem;
+  margin: 5px 0 10px;
+  color: #6c757d;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .movie-grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-item {
+    width: 180px; /* Smaller width for smaller screens */
+    height: 270px; /* Adjust height proportionally */
+  }
+}
+
+@media (max-width: 576px) {
+  .movie-item {
+    width: 150px;
+  }
+}
