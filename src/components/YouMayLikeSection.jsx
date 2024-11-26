@@ -8,11 +8,18 @@ const YouMayLikeSection = ({ movies }) => (
       <p>No additional movie recommendations at the moment.</p>
     ) : (
       <div className="movie-grid">
-        {movies.map((movie) => (
-          <div key={movie.imdbID} className="movie-item">
-            <h3>{movie.Title}</h3>
-            <img src={movie.Poster} alt={movie.Title} />
-            <p>{movie.Year}</p>
+        {movies.slice(0, 12).map((movie) => ( // Ensure it displays only 12 movies
+          <div key={movie.id} className="movie-item">
+            <h3>{movie.title}</h3>
+            <img
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : 'https://via.placeholder.com/200x300?text=No+Image'
+              }
+              alt={movie.title}
+            />
+            <p>Release Date: {movie.release_date}</p>
           </div>
         ))}
       </div>

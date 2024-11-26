@@ -1,36 +1,43 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Define an async thunk to fetch movies from OMDb API
+// Define an async thunk to fetch movies from TMDb API
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
   async (searchQuery, { rejectWithValue }) => {
     try {
+      // Make API call to TMDb search endpoint
       const response = await axios.get(
-        `http://www.omdbapi.com/?s=${searchQuery}&apikey=32a47b7d`
+        `https://api.themoviedb.org/3/search/movie`,
+        {
+          params: {
+            api_key: '9ae1cfcc5d093eece27697647bf4c56f', // TMDb API Key
+            query: searchQuery, // Search query
+          },
+        }
       );
 
-      // Check if the API response is valid
-      if (response.data.Response === 'False') {
-        return rejectWithValue(response.data.Error); // Reject if no results
+      // Check if the API response contains results
+      if (!response.data.results || response.data.results.length === 0) {
+        return rejectWithValue('No movies found'); // Reject if no results
       }
 
-      // Filter out movies with missing images (Poster is 'N/A')
-      const validMovies = response.data.Search.filter(
-        (movie) => movie.Poster !== 'N/A'
+      // Filter out movies with missing poster images
+      const validMovies = response.data.results.filter(
+        (movie) => movie.poster_path !== null
       );
 
-      return validMovies; // Return only movies with valid images
+      return validMovies; // Return only movies with valid poster images
     } catch (error) {
-      return rejectWithValue(error.message); // Return error message if request fails
+      return rejectWithValue(error.response?.data?.status_message || error.message); // Handle errors
     }
   }
 );
 
 const initialState = {
-  items: [],
-  status: 'idle',
-  error: null,
+  items: [], // List of fetched movies
+  status: 'idle', // Loading status
+  error: null, // Error message
 };
 
 const movieSlice = createSlice({
@@ -40,14 +47,14 @@ const movieSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.pending, (state) => {
-        state.status = 'loading';
+        state.status = 'loading'; // Set status to loading
       })
       .addCase(fetchMovies.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.items = action.payload; // Set the valid movies to state
+        state.status = 'succeeded'; // Set status to succeeded
+        state.items = action.payload; // Update state with fetched movies
       })
       .addCase(fetchMovies.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = 'failed'; // Set status to failed
         state.error = action.payload || action.error.message; // Set the error message
       });
   },

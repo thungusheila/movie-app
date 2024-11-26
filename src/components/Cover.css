@@ -1,0 +1,128 @@
+.cover {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    padding: 20px;
+    height: 100vh;
+  }
+  
+  .cover-title {
+    flex: 1;
+    text-align: left;
+   
+    font-style: normal;
+    font-family: 'Bebas Neue';
+  }
+  
+  .cover-title h2 {
+    
+
+font-weight: 400;
+font-size: 30px;
+/* identical to box height */
+color: #FFFFFF;
+  }
+  .cover-title h3 {
+
+
+font-weight: 400;
+font-size: 45px;
+
+
+background: linear-gradient(94.49deg, #2203FF 33.29%, #C40D60 67.01%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+fill: transparent;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  }
+  
+  .cover-title p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+font-size: 22px;
+line-height: 27px;
+
+    color: #CECECE;
+    
+  }
+  
+  .tutorial {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.2037px solid #6A6A6A;
+    border-radius: 8.42593px;
+    
+    
+  }
+  
+  .watch-logo {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+  }
+  
+  .watch-tutorial {
+   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21.1382px;
+    
+    /* identical to box height */
+    
+    color: #FFFFFF;
+    
+
+  }
+  
+  .cover-images {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex: 1;
+    
+   
+  }
+  
+  .cover-image {
+    position: relative;
+    width: 200px;
+    height:auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .image1 {
+   
+    width: 423px;
+    height: 637px;
+    left: 500px;
+    top: -100px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+
+
+    
+  }
+  
+  .image2 {
+    
+    width: 473px;
+    height: 700px;
+    left: -295px;
+   
+    filter: blur(1.5px);
+
+
+  }
+  
+  .cover-image:hover {
+    transform: scale(1.05);
+  }
+  
