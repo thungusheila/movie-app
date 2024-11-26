@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavBar.css';
+import './Navbar.css';
 import logo from "../assets/Mask group.svg"
 import movies from "../assets/Movies..svg"
 
